@@ -3,7 +3,7 @@ exports.data = function(cb) {
 	var exec = require('child_process').exec;
 	var res = {};
 
-	exec("cat /sys/class/thermal/thermal_zone0/temp", function(err, stdout, stderr) {
+	exec("cat /sys/class/thermal/thermal_zone0/temp", function(err, stdout) {
 		if (!err) {
 			res.cpu_temperature = Math.round(stdout / 1000).toFixed(1);
 		}
@@ -18,4 +18,4 @@ exports.manage_post = function(post, cb) {
 
 exports.updatetime = 1000;
 exports.title = 'Temperature Graph';
-exports.columns = 6;
+exports.columns = 2;
